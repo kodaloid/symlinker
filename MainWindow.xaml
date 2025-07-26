@@ -1,0 +1,64 @@
+﻿<Window x:Class="SymLinker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SymLinker"
+        mc:Ignorable="d" ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        Title="SymLinker" Height="450" Width="800" Icon="/symlinker.ico">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:Commands.MenuAddFileLink" CanExecute="CanExecuteAlways" Executed="FileMenu_CommandExecuted" />
+        <CommandBinding Command="local:Commands.MenuAddDirectoryLink" CanExecute="CanExecuteAlways" Executed="FileMenu_CommandExecuted" />
+        <CommandBinding Command="local:Commands.MenuImportLinks" CanExecute="CanExecuteAlways" Executed="FileMenu_CommandExecuted" />
+        <CommandBinding Command="local:Commands.MenuRemoveSelected" CanExecute="CanExecuteOnSelection" Executed="FileMenu_CommandExecuted" />
+        <CommandBinding Command="local:Commands.MenuExit" CanExecute="CanExecuteAlways" Executed="FileMenu_CommandExecuted" />
+        <CommandBinding Command="local:Commands.MenuAbout" CanExecute="CanExecuteAlways" Executed="FileMenu_CommandExecuted" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition  />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu Padding="3" Background="#eee">
+            <MenuItem Header="_File" Padding="9,2">
+                <MenuItem Command="local:Commands.MenuAddDirectoryLink" />
+                <MenuItem Command="local:Commands.MenuAddFileLink" />
+                <Separator />
+                <MenuItem Command="local:Commands.MenuImportLinks" />
+                <MenuItem Command="local:Commands.MenuRemoveSelected" />
+                <Separator />
+                <MenuItem Command="local:Commands.MenuExit" />
+            </MenuItem>
+            <MenuItem Header="Help" Padding="9,2">
+                <MenuItem Command="local:Commands.MenuAbout" />
+            </MenuItem>
+        </Menu>
+
+        <Border Grid.Row="1" Background="#eee" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" Margin="3,3,3,5">
+                <Button Content="Add" />
+            </StackPanel>
+        </Border>
+
+        <ListView Grid.Row="2" BorderThickness="0,1" BorderBrush="LightGray" Name="ListLinks">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Type" Width="120" DisplayMemberBinding="{Binding Type}" />
+                    <GridViewColumn Header="Link" Width="250" DisplayMemberBinding="{Binding Source}" />
+                    <GridViewColumn Header="Points To" Width="250" DisplayMemberBinding="{Binding Target}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock Text="Idle." />
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>

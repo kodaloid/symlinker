@@ -1,0 +1,46 @@
+﻿<Window x:Class="SymLinker.Windows.AddLinkDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SymLinker.Windows"
+        mc:Ignorable="d" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False"
+        Title="Add New or Existing Link" Height="Auto" Width="400" SizeToContent="Height">
+    <StackPanel Margin="8">
+
+
+
+        <GroupBox Margin="0,0,0,8" Header="Setup Symlink">
+            <StackPanel Margin="8,8,8,0">
+                <Label FontWeight="Bold" Margin="-3,0,0,0">Symbolic Link Location</Label>
+                <DockPanel Margin="0,0,0,8">
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Top">
+                        <Button Name="ButtonBrowseSource" Content="..." Margin="8,0,0,0" Height="28" Width="28" Padding="2,0,0,0" Click="ChooseLink_Click" />
+                    </StackPanel>
+                    <TextBox Name="TextSource" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,0" MinHeight="26" Height="Auto" Padding="5" Text="" />
+                </DockPanel>
+
+                <Label FontWeight="Bold" Margin="-3,0,0,0">Target Path</Label>
+                <DockPanel Margin="0,0,0,8">
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Top">
+                        <Button Name="ButtonBrowseTarget" Content="..." Margin="8,0,0,0" Height="28" Width="28" Padding="2,0,0,0" Click="ChooseTarget_Click" />
+                    </StackPanel>
+                    <TextBox Name="TextTarget" AcceptsReturn="True" TextWrapping="Wrap" Margin="0,0,0,0" MinHeight="26" Height="Auto" Padding="5" Text="" />
+                </DockPanel>
+
+                <Label FontWeight="Bold" Margin="-3,0,0,0">Link Type</Label>
+                <StackPanel Margin="3,3,3,8">
+                    <RadioButton Name="RadioSoftLink" GroupName="Format" Content="Soft Link (Deleting link does not delete destination)." IsChecked="True" />
+                    <RadioButton Name="RadioHardLink" GroupName="Format" Content="Hard Link" Margin="0,4" />
+                    <RadioButton Name="RadioJunction" GroupName="Format" Content="Junction [deprecated]" IsEnabled="False" Opacity="0.5" Visibility="Collapsed" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="70" IsDefault="True" Content="OK" Margin="0,0,8,0" Click="ButtonOK_Click" />
+            <Button Width="70" IsCancel="True" Content="Cancel" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>

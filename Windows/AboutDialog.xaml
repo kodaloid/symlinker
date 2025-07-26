@@ -1,0 +1,21 @@
+﻿<Window x:Class="SymLinker.Windows.AboutDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SymLinker.Windows"
+        mc:Ignorable="d" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Title="AboutDialog" Height="Auto" SizeToContent="Height" Width="300">
+    <Grid>
+        <StackPanel Margin="12">
+            <TextBlock FontSize="18" FontWeight="SemiBold" Text="SymLinker" TextAlignment="Center" />
+            <TextBlock FontSize="10" Margin="0,3,0,3" TextAlignment="Center">
+                Version 0.1 - License MIT<LineBreak />
+                <Hyperlink>https://github.com/kodaloid/symlinker</Hyperlink><LineBreak />
+                Created by Kodaloid<LineBreak />
+            </TextBlock>
+            <TextBlock Text="A basic app written in .NET for creating &amp; tracking symbolic links on Windows." TextWrapping="Wrap" Margin="0,0,0,16" TextAlignment="Center" />
+            <Button HorizontalAlignment="Center" IsCancel="True" Content="Close" Height="20" Padding="10,0" />
+        </StackPanel>
+    </Grid>
+</Window>
